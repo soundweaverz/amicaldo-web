@@ -20,5 +20,5 @@ func main() {
 	{
 		crews.GET("/", controllers.GetCrews())
 	}
-	router.Run()
+	router.Run(":3000")
 }
