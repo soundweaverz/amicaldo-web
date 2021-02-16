@@ -16,5 +16,9 @@ func main() {
 	{
 		users.GET("/", controllers.GetUsers())
 	}
+	crews := router.Group("/crews")
+	{
+		crews.GET("/", controllers.GetCrews())
+	}
 	router.Run()
 }
