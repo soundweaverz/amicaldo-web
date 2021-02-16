@@ -20,7 +20,7 @@ func InitializeDatabase() {
 
 func Cors() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Writer.Header().Add("Access-Control-Allow-Origin", "localhost:8080")
+		c.Writer.Header().Add("Access-Control-Allow-Origin", "http://localhost:8080")
 		c.Next()
 	}
 }
