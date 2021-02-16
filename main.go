@@ -10,8 +10,11 @@ import (
 func main() {
 	controllers.InitializeDatabase()
 
-	r := gin.Default()
-	r.Use(controllers.Cors())
-	r.GET("/users", controllers.GetUsers())
-	r.Run()
+	router := gin.Default()
+	router.Use(controllers.Cors())
+	users := router.Group("/users")
+	{
+		users.GET("/", controllers.GetUsers())
+	}
+	router.Run()
 }

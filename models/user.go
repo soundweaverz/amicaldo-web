@@ -1,6 +1,7 @@
 package models
 
 type User struct {
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
+	Name     string `json:"name"`
+	IngameID string `json:"ingameID"`
+	Image    string `json:"image"`
 }
