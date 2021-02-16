@@ -9,7 +9,7 @@ import (
 )
 
 func getUsersFromDB() []User {
-	rows, err := db.Query("SELECT first_name, last_name FROM users")
+	rows, err := db.Query("SELECT name, ingame_id, image, active FROM pubgm_users")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -18,12 +18,14 @@ func getUsersFromDB() []User {
 
 	for rows.Next() {
 		var user User
+		active := 0
 
-		err = rows.Scan(&user.FirstName, &user.LastName)
+		err = rows.Scan(&user.Name, &user.IngameID, &user.Image, &active)
 		if err != nil {
 			panic(err.Error())
 		}
 
+		user.Active = active == 1
 		users = append(users, user)
 	}
 
